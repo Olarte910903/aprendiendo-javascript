@@ -53,7 +53,38 @@ const usuario ={
 
 let {username, cedula, telefono} = usuario;
 
-console.log(username, telefono)
+console.log(username, telefono);
+
+/*Spread Operator
+Agrega nueva información a los objetos ya creados.
+Gracias al spread operator vamos a poder traer todo lo que se encuentre en un objeto
+y asignarlo sin ningún inconveniente.
+*/
+
+let person = {name:"Miguel", age:31};
+let country = "COL";
+
+let data = {...person, country};
+console.log(data);
+
+/*
+Parámetros Rest
+los parámetros rest son una característica que permite a una función aceptar
+un número variable de argumentos. Se utilizan para definir un parámetro
+de función que puede aceptar un número variable de argumentos,
+que se pueden acceder dentro de la función a través de un arreglo.
+Aquí, los tres puntos (...) antes del nombre del parámetro args 
+indican que args es un parámetro rest, lo que significa que puede 
+.aceptar cualquier número de argumentos. Dentro de la función, args se trata como un arreglo
+*/
+
+function sum(num, ...values){
+    console.log(values);
+    console.log(num + values[0]);
+    return num + values[0];
+}
+
+sum(1,2,3);
 
 /*Funciones declarativas:
 Son funciones que tienen hoisting se pueden invocar antes de ser
@@ -82,7 +113,7 @@ edadUsuario > edadPermitida ? "Bienvenido":"Aun eres menor de edad"
 
 const numeros = [2,3];
 numeros.push(5);
-numeros
+
 
 //Programación orientada a objetos clases
 class Usuario {
@@ -108,7 +139,79 @@ console.log(nuevoUsuario.uAge);
 let verdadero = true;
 let falso = false;
 
-verdadero ? 'hola' : 'bienvenido'; // operador ternario
+// operador ternario
+
+verdadero ? 'hola' : 'bienvenido'; 
+
+/*
+**Promesas**
+
+Las promesas son un concepto fundamental en JavaScript que se utiliza para manejar la asincronía
+en el lenguaje. Las promesas permiten ejecutar código asincrónico y realizar tareas como solicitudes 
+de red, lectura y escritura de archivos, y otras operaciones que pueden tomar tiempo en completarse, 
+sin bloquear el hilo principal de ejecución.
+
+Una promesa representa un valor que puede no estar disponible en el momento en que se crea la promesa,
+pero que se espera que esté disponible en algún momento futuro. La promesa puede estar en uno de tres estados:
+pending (pendiente), fulfilled (cumplida) o rejected (rechazada).
+
+let promesa = new Promise(function(resolve, reject) {
+  --Código asincrónico
+});
+En este ejemplo, se crea una promesa utilizando la palabra clave new seguida de la clase Promise. 
+El constructor de la promesa recibe una función que contiene código asincrónico y dos parámetros: 
+resolve y reject. resolve se utiliza para indicar que la promesa se ha cumplido exitosamente, 
+mientras que reject se utiliza para indicar que la promesa se ha rechazado debido a un error.
+
+Cuando la promesa se cumple, se puede utilizar el método then para ejecutar una función con el valor resultante:
+
+promesa.then(function(valor) {
+  --Código a ejecutar cuando la promesa se cumple
+});
+
+Cuando la promesa se rechaza, se puede utilizar el método catch para ejecutar una función con el error resultante:
+
+
+promesa.catch(function(error) {
+  --Código a ejecutar cuando la promesa se rechaza
+});
+
+Las promesas también pueden encadenarse utilizando el método then. Por ejemplo:
+
+promesa.then(function(valor1) {
+  --Código a ejecutar cuando la primera promesa se cumple
+  return valor2;
+}).then(function(valor2) {
+  --Código a ejecutar cuando la segunda promesa se cumple
+}).catch(function(error) {
+  --Código a ejecutar cuando se produce un error en alguna de las promesas
+});
+En este ejemplo, la segunda función then se ejecuta después de que la primera promesa se cumple 
+y devuelve un valor valor2. La segunda función then se puede encadenar a la primera porque devuelve 
+una nueva promesa. Si alguna de las promesas se rechaza, el control se transfiere al método catch.
+
+En resumen, las promesas son una forma poderosa y flexible de manejar la asincronía en JavaScript, 
+y son fundamentales para el desarrollo de aplicaciones web modernas.
+
+
+
+
+Regenerate response
+*/
+
+const anotherFunction = () => {
+    return new Promise ((resolve, reject) => {
+        if(false){
+            resolve ('Hey!');
+        }else{
+            reject('Whoops!');
+        }
+    })
+}
+
+anotherFunction()
+.then(response => console.log(response))
+.catch(err => console.log(err));
 
 //async await
 
