@@ -1,3 +1,34 @@
+//Scope de variables
+
+var cedula = 1999999999;  //Scope global
+let fecha = "enero" //Scope de bloque
+const redBull = 91; //Constante scope de bloque
+
+//Arrow functions
+
+const square = (num) => {
+    return num * num;
+}
+
+//Parámetros por defecto
+
+function newUser(name, age, country){
+    var name = name || "Miguel";
+    var age = age || 31;
+    var country = country || "Colombia";
+
+    console.log(name);
+    console.log(age);
+    console.log(country);
+}
+
+function newAdmin (name ="Miguel", age = 31, country ="Colombia"){
+    console.log(name, age, country);
+}
+
+newUser();
+newAdmin();
+
 //Template literals
 function metodoGauss(nombre){
   console.log(`Hola ${nombre} como estàs `)
